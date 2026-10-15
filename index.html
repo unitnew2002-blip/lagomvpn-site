@@ -96,7 +96,9 @@
   .btn--block { width: 100%; }
 
   /* =================== Nav =================== */
-  .nav { position: fixed; inset: 0 0 auto; z-index: 50; color: #fff; transition: background-color .35s, color .35s, box-shadow .35s, transform .45s var(--ease); }
+  .nav { position: fixed; inset: 0 0 auto; z-index: 50; color: var(--ink); background: #fff; box-shadow: 0 1px 0 rgba(46,47,49,.08); transition: background-color .35s, color .35s, box-shadow .35s, transform .45s var(--ease); }
+  .nav .btn--white { background: #4C22F2; color: #fff; }   /* Figma: violet "Download free" on the white header */
+  .nav .btn--white:hover { background: var(--violet); }
   .nav__in { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .logo { display: block; width: 122px; height: 28px; flex: none; }
   .logo svg { width: 100%; height: 100%; }
@@ -109,8 +111,6 @@
   .burger { display: none; width: 36px; height: 36px; place-items: center; }
   .burger svg { width: 24px; height: 24px; }
   .nav.is-solid, .nav.is-open { background: rgba(255,255,255,.9); color: var(--ink); box-shadow: 0 1px 0 rgba(46,47,49,.08); -webkit-backdrop-filter: saturate(1.6) blur(16px); backdrop-filter: saturate(1.6) blur(16px); }
-  .nav.is-solid .btn--white, .nav.is-open .btn--white { background: var(--ink); color: #fff; }
-  .nav.is-solid .btn--white:hover { background: #000; }
   .nav.is-hidden:not(.is-open) { transform: translateY(-100%); }
   .nav__menu { display: none; }
   @media (max-width: 1023px) {
@@ -130,7 +130,6 @@
   .hero__bg video { opacity: 0; transition: opacity 1.2s; }
   .hero__ascii { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
   .hero__bg video.is-playing { opacity: 1; }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.24) 0%, rgba(0,0,0,0) 28%); }
   .hero__in { position: relative; align-self: stretch; display: flex; align-items: center; padding: 120px 0 72px; }
   .hero__copy { max-width: 613px; position: relative; }
   .hero__phone { position: absolute; right: -7px; bottom: 0; width: min(546px, 42.7%); height: auto; pointer-events: none; }
@@ -177,8 +176,8 @@
   /* =================== Features =================== */
   .features { padding-top: var(--sec); }
   .features .h2 { margin-bottom: clamp(32px, 3.9vw, 56px); }
-  .grid-a { display: grid; grid-template-columns: minmax(0, 790fr) minmax(0, 470fr); gap: 20px; }
-  .grid-b { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+  .grid-f { display: grid; grid-template-columns: minmax(0, 581fr) minmax(0, 679fr); gap: 20px; }
+  .grid-f__col { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; }
   .card { position: relative; border-radius: var(--r); overflow: hidden; isolation: isolate; }
   .card__bg { position: absolute; inset: 0; z-index: -2; }
   .card__bg img, .card__bg video { width: 100%; height: 100%; object-fit: cover; }
@@ -187,25 +186,22 @@
   .on-dark .ftext { color: rgba(255,255,255,.72); }
   .on-dark .ftext .t { color: #fff; }
 
-  .fc1 { min-height: 520px; padding: 32px; color: #fff; background: #4F37EE; }
+  .fc1 { min-height: 680px; padding: 32px; color: #fff; background: #4F37EE; }
   .fc1 .ftext { max-width: 518px; }
   .fc1 .btn { margin-top: 28px; align-self: flex-start; }
-  .fc1__phone { position: absolute; right: 0; bottom: 0; width: 44.2%; z-index: -1; }
-  .fc2 { min-height: 520px; padding: 32px; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; background: #c9c9c9; }
-  .fc2::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.7) 89%); }
-  .fc2 .ftext { max-width: 406px; }
-  .fc2 .btn { margin-top: 16px; align-self: flex-start; }
+  .fc1__phone { position: absolute; right: 0; bottom: 0; width: 70.4%; z-index: -1; }
 
-  .fs { min-height: 300px; padding: 32px; background: var(--tile); }
-  .fs .ftext { font-size: clamp(16px, 1.25vw, 18px); max-width: 300px; color: var(--muted); }
+  .fs { min-height: 330px; padding: 32px; background: var(--tile); }
+  .fs .ftext { font-size: clamp(16px, 1.25vw, 18px); max-width: 330px; color: var(--muted); }
   .fs .ftext .t { color: var(--ink); }
-  .fs__ks { position: absolute; top: 28px; right: 28px; }
-  .fs__3d { position: absolute; right: 51px; bottom: 21px; width: 218px; }
+  .fs .btn { margin-top: 24px; }
+  .fs__ks { position: absolute; top: 28px; right: 40px; }
+  .fs__3d { position: absolute; top: 32px; right: 44px; width: 185px; }
 
-  /* Kill Switch visual (used in features and in the trust rail) */
-  .ks { width: 188px; display: grid; gap: 8px; }
-  .ks__photo { height: 170px; border-radius: 12px; overflow: hidden; background: #023598; }
-  .ks__photo img { width: 100%; height: 116.5%; object-fit: cover; }
+  /* "One tap to connect" visual: key photo + status chips */
+  .ks { width: 192px; display: grid; gap: 8px; }
+  .ks__photo { height: 174px; border-radius: 12px; overflow: hidden; background: #000; }
+  .ks__photo img { width: 100%; height: 100%; object-fit: cover; }
   .ks__chips { display: flex; gap: 8px; }
   .chip { height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0 12px; border-radius: 12px; background: #fff; color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1; white-space: nowrap; }
   .chip:first-child { flex: 1; }
@@ -214,39 +210,65 @@
   .led::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--ok); animation: led 2.4s ease-out infinite; }
   @keyframes led { 0% { transform: scale(1); opacity: .6; } 70%, 100% { transform: scale(3); opacity: 0; } }
 
+  /* tablet: VLESS card on top, the two tiles below keep the desktop layout (copy left, visual right) */
   @media (max-width: 1023px) {
-    .grid-a, .grid-b { grid-template-columns: 1fr; }
+    .grid-f { grid-template-columns: 1fr; }
+    .grid-f__col { grid-template-rows: auto; }
     .fc1 { min-height: 0; padding-bottom: 0; display: flex; flex-direction: column; }
-    .fc1__phone { position: relative; width: min(349px, 70%); align-self: flex-end; margin: 24px -32px 0 0; }
-    .fc2 { min-height: clamp(460px, 110vw, 620px); }
-    .fs { min-height: 0; display: flex; flex-direction: column; gap: 24px; }
+    .fc1__phone { position: relative; width: min(409px, 80%); align-self: flex-end; margin: 24px -32px 0 0; }
+    .fs { min-height: 280px; }
+    .fs .ftext { max-width: calc(100% - 260px); }
+  }
+  /* phone: copy, then a smaller visual bottom-left; buttons keep their own width */
+  @media (max-width: 767px) {
+    .fs { min-height: 0; padding: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+    .fs .ftext { max-width: none; }
+    .fs .btn { margin-top: 0; }
     .fs__ks, .fs__3d { position: static; }
-    .fs__ks { align-self: flex-end; }
-    .fs__3d { width: 168px; align-self: flex-end; margin: -8px -8px -10px 0; }
+    .fs__ks { width: 150px; }
+    .fs__ks .ks__photo { height: 136px; }
+    .fs__ks .chip { height: 34px; font-size: 12px; padding: 0 10px; }
+    .fs__ks .chip--on { padding: 0 12px; }
+    .fs__3d { width: 130px; }
   }
 
   /* =================== Use cases =================== */
+  /* Figma 6540:2194: 1280 × hug, photo panel 466 | gap 56 | list, padding 36. Panel = blurred tulip photo + interactive ASCII. */
   .uses { position: relative; z-index: 1; padding-top: var(--sec); }
-  .uses__box { position: relative; min-height: clamp(720px, 75.5vw, 1087px); padding: 36px; border-radius: var(--r); overflow: hidden; isolation: isolate; color: #fff; background: #000; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
-  /* photo fills the top ~71% of the box and fades into the black bottom (Figma 6468:11023) */
-  .uses__bg { position: absolute; left: 0; right: 0; top: 0; height: 71.5%; z-index: -2; overflow: hidden; }
-  .uses__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-  .uses__bg::after { content: ""; position: absolute; inset: -1px; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 58%, rgba(0,0,0,.85) 88%, #000 100%); }
-  .uses__head p { margin-top: 16px; color: rgba(255,255,255,.72); max-width: 488px; }
-  .uses__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .use { min-height: 190px; padding: 24px; border-radius: var(--r); background: rgba(255,255,255,.12); -webkit-backdrop-filter: blur(22px); backdrop-filter: blur(22px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
-  .use h3 { font-size: clamp(16px, 1.25vw, 18px); font-weight: 500; line-height: 1.4; }
-  .use p { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.4; }
-  @media (max-width: 1100px) { .uses__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  /* phone: edge-to-edge block, photo on top, heading over its dark lower part, cards in a swipeable row */
+  .uses__box { display: grid; grid-template-columns: minmax(0, 466fr) minmax(0, 722fr); gap: 56px; padding-right: 36px; border-radius: var(--r); overflow: hidden; background: var(--tile); }
+  .uses__panel { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #4B22ED; }
+  .uses__photo { position: absolute; z-index: 0; max-width: none; filter: blur(16px) saturate(1.06); transform: translateZ(0); pointer-events: none; user-select: none; }
+  .uses__shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(34,8,150,.6) 0%, rgba(34,8,150,.42) 24%, rgba(34,8,150,.12) 40%, rgba(34,8,150,0) 50%); }
+  .uses__ascii { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; display: block; }
+  .uses__grain { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .22; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .uses__head { position: relative; z-index: 2; padding: 36px; display: grid; gap: 16px; }
+  .uses__head .h2 { font-size: clamp(36px, 3.3vw, 48px); }
+  .uses__head p { color: #fff; }
+  .uses__list { list-style: none; margin: 0; padding: 36px 0; }
+  .use { display: grid; grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; padding: 24px 0; border-top: 1px solid rgba(46,47,49,.14); align-items: start; }
+  .use:first-child { border-top: 0; }
+  .use svg { width: 22px; height: 22px; margin-top: 2px; fill: var(--ink); }
+  .use h3 { font-size: 20px; font-weight: 500; line-height: 26px; }
+  .use p { font-size: 16px; line-height: 22px; color: rgba(46,47,49,.64); }
+  /* tablet: photo panel becomes a wide banner on top, the list keeps its three columns */
+  @media (max-width: 1000px) {
+    .uses__box { grid-template-columns: 1fr; gap: 0; padding: 0; }
+    .uses__panel { min-height: 400px; }
+    .uses__head .h2 { font-size: 40px; }
+    .uses__list { padding: 8px 32px 16px; }
+  }
+  /* phone: the banner only holds the heading and the lead */
   @media (max-width: 767px) {
     .uses .wrap { width: 100%; }
-    .uses__box { display: block; min-height: 0; padding: 0 0 28px; border-radius: 0; }
-    .uses__bg { position: relative; height: 118vw; max-height: 600px; }
-    .uses__head { position: relative; margin-top: -38vw; padding: 0 var(--pad); }
-    .uses__grid { display: flex; gap: 12px; margin-top: 28px; padding: 0 var(--pad); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); scrollbar-width: none; }
-    .uses__grid::-webkit-scrollbar { display: none; }
-    .use { flex: 0 0 78%; min-height: 172px; padding: 20px; scroll-snap-align: start; }
+    .uses__box { border-radius: 0; }
+    .uses__panel { min-height: 0; }
+    .uses__head { padding: 32px var(--pad) 40px; }
+    .uses__head .h2 { font-size: 34px; }
+    .uses__list { padding: 8px var(--pad) 16px; }
+    .use { grid-template-columns: 22px minmax(0, 1fr); column-gap: 16px; row-gap: 6px; padding: 20px 0; }
+    .use h3 { font-size: 18px; line-height: 24px; }
+    .use p { grid-column: 2; }
   }
 
   /* =================== Trust: dome intro =================== */
@@ -294,12 +316,16 @@
   .rail > li { pointer-events: auto; }
   .rail.is-drag { cursor: grabbing; scroll-snap-type: none; user-select: none; }
   .rail > li { flex: none; width: calc(var(--w) * var(--k) * 1px); scroll-snap-align: start; }
-  .tc { position: relative; height: calc(var(--h) * var(--k) * 1px); border-radius: var(--r); overflow: hidden; isolation: isolate; display: grid; place-items: center; background: var(--bg, #fff); }
+  .tc { position: relative; height: calc(var(--h) * var(--k) * 1px); border-radius: var(--r); overflow: hidden; isolation: isolate; background: var(--bg, #fff); }
+  .tc__vis { position: absolute; left: 0; right: 0; top: calc(var(--vt, 200) * var(--k) * 1px); display: flex; justify-content: center; }
+  .tc__rb { position: absolute; left: 0; right: 0; top: calc(90px * var(--k)); height: 100%; }
   .tc > img, .tc > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; pointer-events: none; transition: transform .8s var(--ease); }
   @media (hover: hover) { .rail > li:hover .tc > img, .rail > li:hover .tc > video { transform: scale(1.04); } }
-  .cap { padding-top: 14px; }
-  .cap h3 { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1.2; }
-  .cap p { margin-top: 4px; font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.72); max-width: 32em; }
+  .cap { position: absolute; z-index: 1; top: calc(28px * var(--k)); left: calc(28px * var(--k)); right: calc(28px * var(--k)); display: grid; gap: calc(8px * var(--k)); color: #fff; }
+  .cap h3 { display: flex; align-items: center; gap: 8px; font-size: calc(20px * var(--k)); font-weight: 500; line-height: 1.25; }
+  .cap p { font-size: calc(15px * var(--k)); line-height: 1.45; color: rgba(255,255,255,.78); }
+  .tc--light .cap { color: var(--ink); }
+  .tc--light .cap p { color: rgba(46,47,49,.7); }
   .cap a { display: inline-flex; align-items: center; gap: 4px; color: #fff; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(255,255,255,.5); }
   .cap a:hover { text-decoration-color: #fff; }
   .cap a .ico-link { width: 14px; height: 14px; }
@@ -351,8 +377,6 @@
   @keyframes sway-b { 50% { transform: translateY(-12px) scaleY(1.05); } }
   @keyframes sway-c { 50% { transform: translateY(4px); opacity: .6; } }
 
-  .tc .ks { width: calc(188px * var(--k)); }
-  .tc .ks__photo { height: calc(170px * var(--k)); }
 
   /* =================== Pricing =================== */
   .pricing { padding-top: var(--sec); }
@@ -591,7 +615,7 @@
     <canvas class="hero__ascii"></canvas>
   </div>
   <div class="wrap hero__in">
-    <img class="hero__phone" src="assets/img/hero-phone.webp" alt="LagomVPN app on an iPhone: VPN disconnected, power button" width="1096" height="1435" fetchpriority="high" data-hero>
+    <img class="hero__phone" src="assets/img/hero-phone-connected.webp" alt="LagomVPN app on an iPhone: VPN connected, power button" width="1160" height="1518" fetchpriority="high" data-hero>
     <div class="hero__copy">
       <p class="badge" data-hero>10 GB free · no card needed</p>
       <h1 class="h1" id="hero-title">
@@ -643,7 +667,7 @@
       <span class="ln"><span class="dim">that keeps working</span></span>
     </h2>
 
-    <div class="grid-a">
+    <div class="grid-f">
       <article class="card fc1 on-dark" data-card>
         <div class="card__bg" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/hero-ascii.webp" data-inview data-zoom><source src="assets/video/hero-ascii.mp4" type="video/mp4"></video></div>
         <p class="ftext"><span class="t">Works when other VPNs get blocked:</span> On restricted networks, standard VPN protocols can struggle or get blocked. LagomVPN uses VLESS to help keep your connection accessible.</p>
@@ -651,29 +675,24 @@
         <img class="fc1__phone" src="assets/img/phone-lagom.webp" alt="LagomVPN app icon on a phone home screen" loading="lazy" width="720" height="751" data-rise>
       </article>
 
-      <article class="card fc2 on-dark" data-card>
-        <div class="card__bg" aria-hidden="true"><img src="assets/img/hand-phone.webp" alt="" loading="lazy" data-zoom></div>
-        <p class="ftext"><span class="t">A free plan without ads:</span> No banners and no 15-second videos before you connect. Free means free: 10 GB to start, no card needed.</p>
-        <a class="btn btn--white btn--sm" href="#pricing">Compare Free and PRO<svg class="ico-link" aria-hidden="true"><use href="#i-link"/></svg></a>
-      </article>
-    </div>
-
-    <div class="grid-b">
-      <article class="card fs" data-card>
-        <p class="ftext"><span class="t">What you do stays yours:</span> We don’t log or track what you do online. If the VPN drops, Kill Switch pauses your internet so nothing slips out unprotected.</p>
-        <div class="ks fs__ks" aria-hidden="true">
-          <div class="ks__photo"><img src="assets/img/fingerprint.webp" alt="" loading="lazy"></div>
-          <div class="ks__chips">
-            <span class="chip"><svg class="ico"><use href="#i-globe"/></svg>Kill Switch</span>
-            <span class="chip chip--on"><i class="led"></i>On</span>
+      <div class="grid-f__col">
+        <article class="card fs" data-card>
+          <p class="ftext"><span class="t">One tap to connect:</span> No setup or complicated settings. Open the app, tap connect, and you're online in seconds.</p>
+          <div class="ks fs__ks" aria-hidden="true">
+            <div class="ks__photo"><img src="assets/img/onetap-key.webp" alt="" loading="lazy" width="577" height="522"></div>
+            <div class="ks__chips">
+              <span class="chip"><svg class="ico"><use href="#i-globe"/></svg>Lagom</span>
+              <span class="chip chip--on"><i class="led"></i>On</span>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="card fs" data-card>
-        <p class="ftext"><span class="t">One tap to connect:</span> No setup or complicated settings. Open the app, tap connect, and you're online in seconds.</p>
-        <img class="fs__3d" src="assets/img/connect-3d.webp" alt="" loading="lazy" width="460" height="460" data-float>
-      </article>
+        <article class="card fs" data-card>
+          <p class="ftext"><span class="t">A free plan without ads:</span> No banners and no 15-second videos before you connect. Free means free: 10 GB to start, no card needed.</p>
+          <a class="btn btn--dark btn--sm" href="#pricing">Compare Free and PRO<svg class="ico-link" aria-hidden="true"><use href="#i-link"/></svg></a>
+          <img class="fs__3d" src="assets/img/connect-3d.webp" alt="" loading="lazy" width="460" height="460" data-float>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -682,22 +701,27 @@
 <section class="uses" id="for" aria-labelledby="for-title">
   <div class="wrap">
     <div class="uses__box" data-box>
-      <div class="uses__bg" aria-hidden="true"><img src="assets/img/uses-photo.webp" alt="" loading="lazy" data-parallax></div>
-      <div class="uses__head">
+      <div class="uses__panel" data-tulip>
+        <img class="uses__photo" src="assets/img/tulip.webp" alt="" loading="lazy" draggable="false">
+        <div class="uses__shade" aria-hidden="true"></div>
+        <canvas class="uses__ascii" aria-hidden="true"></canvas>
+        <div class="uses__grain" aria-hidden="true"></div>
+        <div class="uses__head">
         <h2 class="h2" id="for-title" data-split>
           <span class="ln"><span>A VPN for everything</span></span>
           <span class="ln"><span>you do online</span></span>
         </h2>
-        <p class="lead" data-reveal>From social media to public Wi-Fi, <br class="d">one app keeps your connection private.</p>
+          <p class="lead" data-reveal>From social media to public Wi-Fi, <br class="d">one app keeps your connection private.</p>
+        </div>
       </div>
-      <div class="uses__grid" data-stagger>
-        <article class="use"><h3>Stay connected on restricted networks</h3><p>Apps and sites not loading on your network? Connect with LagomVPN and pick a location that works for you.</p></article>
-        <article class="use"><h3>Streaming on your terms</h3><p>Pick a location and keep watching the shows you love, at home or on the road.</p></article>
-        <article class="use"><h3>Safer on public Wi-Fi</h3><p>Cafés, airports, hotels: encrypt your connection on networks you don't control, in one tap.</p></article>
-        <article class="use"><h3>Your home connection wherever you go</h3><p>Keep using your favorite apps and services just like you do in your country, even when you're abroad.</p></article>
-        <article class="use"><h3>A free plan you can rely on</h3><p>Free 10 GB with no ads, no logs, and no card required. Enough for everyday messaging and browsing.</p></article>
-        <article class="use"><h3>One plan for the whole household</h3><p>Unlimited data and devices on one PRO account. Connect every phone, laptop and TV at home.</p></article>
-      </div>
+      <ol class="uses__list" data-stagger>
+        <li class="use"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2.3c-1.6 2.1-2.5 4.7-2.5 7.7s.9 5.6 2.5 7.7c1.6-2.1 2.5-4.7 2.5-7.7S13.6 6.4 12 4.3ZM2.3 11h6.9v2H2.3v-2Zm12.5 0h6.9v2h-6.9v-2Z"/></svg><h3>Stay connected on restricted networks</h3><p>Apps and sites not loading on your network? Connect with LagomVPN and pick a location that works for you.</p></li>
+        <li class="use"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M4.5 4h15A2.5 2.5 0 0 1 22 6.5v9a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 15.5v-9A2.5 2.5 0 0 1 4.5 4Zm5.5 3.6v6.8l5.6-3.4L10 7.6Z"/><path d="M8 19.5h8V21H8z"/></svg><h3>Streaming on your terms</h3><p>Pick a location and keep watching the shows you love, at home or on the road.</p></li>
+        <li class="use"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4ZM6.8 13.8a7.4 7.4 0 0 1 10.4 0l-1.7 1.7a5 5 0 0 0-7 0l-1.7-1.7ZM3.4 10.4a12.2 12.2 0 0 1 17.2 0l-1.7 1.7a9.8 9.8 0 0 0-13.8 0l-1.7-1.7Z"/></svg><h3>Safer on public Wi-Fi</h3><p>Cafés, airports, hotels: encrypt your connection on networks you don't control, in one tap.</p></li>
+        <li class="use"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8 2 11.3h2.8V21h6v-5.5h2.4V21h6v-9.7H22L12 2.8Z"/></svg><h3>Your home connection wherever you go</h3><p>Keep using your favorite apps and services just like you do in your country, even when you're abroad.</p></li>
+        <li class="use"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h8v3.6H3zM13 8h8v3.6h-8zM4 13.2h7V21H4zM13 13.2h7V21h-7z"/><path d="M12 7.6C10.4 4.4 6.7 3.8 6.3 6c-.3 1.7 2.5 2 5.7 1.6Zm0 0c1.6-3.2 5.3-3.8 5.7-1.6.3 1.7-2.5 2-5.7 1.6Z"/></svg><h3>A free plan you can rely on</h3><p>Free 10 GB with no ads, no logs, and no card required. Enough for everyday messaging and browsing.</p></li>
+        <li class="use"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11.6a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM2 20.2c0-3.7 3.1-6.2 7-6.2s7 2.5 7 6.2v.8H2v-.8Zm14.6-8.8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm1.5 2.1c2.4.5 3.9 2.5 3.9 5.1V21h-4.3v-.8c0-2.4-1-4.4-2.6-5.6.9-.2 2-.2 3-.1Z"/></svg><h3>One plan for the whole household</h3><p>Unlimited data and devices on one PRO account. Connect every phone, laptop and TV at home.</p></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -725,40 +749,44 @@
   </div>
 
   <ul class="rail">
-    <li style="--w:330;--h:410">
+    <li style="--w:400;--h:520">
       <div class="tc">
         <img src="assets/img/gradient-blue-white.webp" alt="" draggable="false" style="object-position:30% 50%">
-        <div class="ui" style="width:78%" aria-hidden="true">
+        <div class="cap">
+          <h3>No activity logs</h3>
+        <p>We don't keep records of what you do online. <br><a href="/no-logs">No-logs commitment<svg class="ico-link" aria-hidden="true"><use href="#i-link"/></svg></a></p>
+        </div>
+        <div class="tc__vis" style="--vt:205"><div class="ui" style="width:64.25%" aria-hidden="true">
           <div class="ui__label"><span>Activity log</span><span class="pill pill--soft">Off</span></div>
           <div class="zero"><b>0</b><span>records kept</span></div>
           <div class="row"><span>Sites you visit</span><span>Not stored</span></div>
           <div class="row"><span>Traffic &amp; DNS</span><span>Not stored</span></div>
           <div class="row"><span>Session times</span><span>Not stored</span></div>
-        </div>
-      </div>
-      <div class="cap">
-        <h3>No activity logs</h3>
-        <p>We don't keep records of what you do online. <br><a href="/no-logs">No-logs commitment<svg class="ico-link" aria-hidden="true"><use href="#i-link"/></svg></a></p>
+        </div></div>
       </div>
     </li>
 
-    <li style="--w:460;--h:390">
-      <div class="tc">
+    <li style="--w:400;--h:520">
+      <div class="tc tc--light">
         <video muted loop playsinline preload="none" poster="assets/img/gradient-vless-poster.webp" data-inview><source src="assets/video/gradient-vless.mp4" type="video/mp4"></video>
-        <div class="ui" style="width:65.4%" aria-hidden="true">
+        <div class="cap">
+          <h3>VLESS</h3>
+        <p>Built for restricted networks where standard VPN protocols may struggle or get blocked.</p>
+        </div>
+        <div class="tc__vis" style="--vt:257"><div class="ui" style="width:75.25%" aria-hidden="true">
           <div class="opt is-on"><span class="radio"></span><span><b>VLESS</b><small>For restricted networks</small></span><span class="pill pill--violet">Active</span></div>
           <div class="opt"><span class="radio"></span><span><b>Auto</b><small>We pick the best one</small></span></div>
-        </div>
-      </div>
-      <div class="cap">
-        <h3>VLESS</h3>
-        <p>Built for restricted networks where standard VPN protocols may struggle or get blocked.</p>
+        </div></div>
       </div>
     </li>
 
-    <li style="--w:360;--h:470">
+    <li style="--w:400;--h:520">
       <div class="tc" style="--bg:var(--dark)">
-        <div class="cipher" aria-hidden="true">
+        <div class="cap">
+          <h3>AES-256 encryption</h3>
+        <p>Keeps your internet traffic encrypted and your data private.</p>
+        </div>
+        <div class="tc__vis" style="--vt:213"><div class="cipher" style="width:72%" aria-hidden="true">
           <div class="cipher__top">
             <span class="cipher__lock"><svg><use href="#i-lock"/></svg></span>
             <span class="cipher__alg">AES-256</span>
@@ -769,15 +797,11 @@
 c081 857f c762 0f78
 dd87 fcf0 4e6a 2f3d
 7bc3 8f99 8052 9ad7</div>
-        </div>
-      </div>
-      <div class="cap">
-        <h3>AES-256 encryption</h3>
-        <p>Keeps your internet traffic encrypted and your data private.</p>
+        </div></div>
       </div>
     </li>
 
-    <li style="--w:390;--h:500">
+    <li style="--w:400;--h:520">
       <div class="tc" style="--bg:var(--violet)">
         <svg width="0" height="0" style="position:absolute" aria-hidden="true">
           <defs>
@@ -786,45 +810,33 @@ dd87 fcf0 4e6a 2f3d
             <linearGradient id="rb-g3" x1="-40" y1="185" x2="440" y2="185" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB08A"/><stop offset=".4" stop-color="#FF4FB8"/><stop offset=".6" stop-color="#FF4FB8" stop-opacity=".8"/><stop offset="1" stop-color="#FFB08A"/></linearGradient>
           </defs>
         </svg>
+        <div class="tc__rb">
         <svg class="ribbons rb1" viewBox="0 0 390 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M-40 210C90 210 110 350 200 350C290 350 310 210 440 210V300C310 300 290 430 200 430C110 430 90 300 -40 300V210Z" fill="url(#rb-g1)"/></svg>
         <svg class="ribbons rb2" viewBox="0 0 390 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path opacity=".9" d="M-40 222C120 218 280 228 440 222V288C280 282 120 292 -40 288V222Z" fill="url(#rb-g2)"/></svg>
         <svg class="ribbons rb3" viewBox="0 0 390 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M-40 210C90 210 110 70 200 70C290 70 310 210 440 210V300C310 300 290 150 200 150C110 150 90 300 -40 300V210Z" fill="url(#rb-g3)"/></svg>
-      </div>
-      <div class="cap">
-        <h3>Split Tunneling <span class="pill pill--lime">PRO</span></h3>
+        </div>
+        <div class="cap">
+          <h3>Split Tunneling <span class="pill pill--lime">PRO</span></h3>
         <p>Choose which apps use the VPN and which connect directly to the internet.</p>
-      </div>
-    </li>
-
-    <li style="--w:360;--h:530">
-      <div class="tc"><img src="assets/img/hand-phone.webp" alt="" draggable="false" loading="lazy"></div>
-      <div class="cap">
-        <h3>No ads, even on Free</h3>
-        <p>Forget about endless ads.</p>
-      </div>
-    </li>
-
-    <li style="--w:338;--h:450">
-      <div class="tc"><img src="assets/img/cable-knot.webp" alt="" draggable="false" loading="lazy"></div>
-      <div class="cap">
-        <h3>No trackers</h3>
-        <p>We don't track your activity across the web.</p>
-      </div>
-    </li>
-
-    <li style="--w:420;--h:430">
-      <div class="tc" style="--bg:var(--tile)">
-        <div class="ks" aria-hidden="true">
-          <div class="ks__photo"><img src="assets/img/fingerprint.webp" alt="" loading="lazy" draggable="false"></div>
-          <div class="ks__chips">
-            <span class="chip"><svg class="ico"><use href="#i-globe"/></svg>Kill Switch</span>
-            <span class="chip chip--on"><i class="led"></i>On</span>
-          </div>
         </div>
       </div>
-      <div class="cap">
-        <h3>Kill Switch</h3>
-        <p>Cuts your connection if the VPN drops, helping keep unprotected traffic out.</p>
+    </li>
+
+    <li style="--w:400;--h:520">
+      <div class="tc tc--light" style="--bg:#AEACAF"><img src="assets/img/trust-noads.webp" alt="" draggable="false" loading="lazy">
+        <div class="cap">
+          <h3>No ads, even on Free</h3>
+        <p>Forget about endless ads.</p>
+        </div>
+      </div>
+    </li>
+
+    <li style="--w:400;--h:520">
+      <div class="tc" style="--bg:#17377E"><img src="assets/img/trust-notrackers.webp" alt="" draggable="false" loading="lazy">
+        <div class="cap">
+          <h3>No trackers</h3>
+        <p>We don't track your activity across the web.</p>
+        </div>
       </div>
     </li>
   </ul>
@@ -872,7 +884,7 @@ dd87 fcf0 4e6a 2f3d
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><a href="/locations">3 locations to pick<svg class="ico-link" aria-hidden="true"><use href="#i-link"/></svg></a></li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>No ads. No trackers. No logs</span></li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>VLESS connection keeps working on strict networks</span></li>
-            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>AES-256 &amp; Kill Switch</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>AES-256</span></li>
           </ul>
         </div>
         <div class="plan__cta">
@@ -1191,7 +1203,7 @@ dd87 fcf0 4e6a 2f3d
     function sampleVideo(force) {
       const src = video.readyState >= 2 && !video.paused ? video : poster;
       const sw = src.videoWidth || src.naturalWidth, sh = src.videoHeight || src.naturalHeight;
-      if (!sw || !sh) return;
+      if (!sw || !sh || !cols || !rows) return;
       const k = Math.max(W / sw, H / sh), vw = W / k, vh = H / k;
       sctx.drawImage(src, (sw - vw) / 2, (sh - vh) / 2, vw, vh, 0, 0, cols, rows);
       const d = sctx.getImageData(0, 0, cols, rows).data, a = force ? 1 : .25;
@@ -1283,6 +1295,7 @@ dd87 fcf0 4e6a 2f3d
     function wake() { if (!running && visible) { running = true; requestAnimationFrame(frame); } }
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) wake(); }).observe(hero);
     addEventListener('resize', resize);
+    new ResizeObserver(() => resize()).observe(bg);   // also re-measures if the hero had no size yet on the first pass
     resize();
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(buildAtlas);
     // a single "ghost" stroke on load so people notice the effect, then it is all theirs
@@ -1454,7 +1467,6 @@ dd87 fcf0 4e6a 2f3d
 
     /* 4) Use cases: the frame opens up and the photo settles while scrolling in */
     gsap.fromTo('[data-box]', { clipPath: 'inset(6% 4% 0% 4% round 12px)' }, { clipPath: 'inset(0% 0% 0% 0% round 6px)', ease: 'none', scrollTrigger: { trigger: '[data-box]', start: 'top 95%', end: 'top 35%', scrub: true } });
-    gsap.fromTo('[data-parallax]', { scale: 1.15, yPercent: -3 }, { scale: 1.04, yPercent: 1, ease: 'none', scrollTrigger: { trigger: '[data-box]', start: 'top bottom', end: 'bottom top', scrub: true } });
 
     /* 5) Trust intro + cards. The purple screen is sticky inside the section; the cards come after it in
           the same section, so they scroll up OVER it while it is still filling with colour.
@@ -1587,6 +1599,110 @@ dd87 fcf0 4e6a 2f3d
     setOpen(d, true);
     scrollToEl(d, -120);
   }));
+})();
+</script>
+<script>
+/* ---------- Use cases panel: blurred tulip photo + interactive ASCII (same engine as uses-variants/tulip.html) ---------- */
+(() => {
+  const panel = document.querySelector('[data-tulip]');
+  if (!panel) return;
+  const still = document.documentElement.classList.contains('static') || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const head = panel.querySelector('.uses__head'), bg = panel.querySelector('.uses__photo');
+  const cv = panel.querySelector('.uses__ascii'), ctx = cv.getContext('2d');
+  const off = document.createElement('canvas'), octx = off.getContext('2d', { willReadFrequently: true });
+  // framing: cover × 1.1, anchored 35% left / top, so the flower sits below the copy
+  const CFG = { zoom: 1.1, ax: .35, ay: 0, lo: 82, textFade: .1 };
+  const RAMP = ['/', 'e', '+', '+', '*', '*', '*', '=', '=', '2'], SCRAMBLE = '/e+*=2';
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const hash = (x, y) => { let h = Math.imul(x | 0, 374761393) + Math.imul(y | 0, 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+  const img = new Image(); img.src = bg.currentSrc || bg.src;
+  let W, H, dpr, CW, CH, cols, rows, val, heat, zone, t0 = null, last = 0;
+  const m = { x: -1e4, y: -1e4, px: -1e4, py: -1e4 };
+
+  function layout() {
+    W = panel.clientWidth; H = panel.clientHeight; dpr = Math.min(2, devicePixelRatio || 1);
+    if (!W || !H) return;
+    cv.width = W * dpr; cv.height = H * dpr;
+    const s = Math.max(W / img.naturalWidth, H / img.naturalHeight) * CFG.zoom;
+    const ay = W > H ? .75 : CFG.ay;   // wide banner (tablet / phone): show the lower part of the photo, where the flower is
+    const iw = img.naturalWidth * s, ih = img.naturalHeight * s, ix = (W - iw) * CFG.ax, iy = (H - ih) * ay;
+    Object.assign(bg.style, { left: ix + 'px', top: iy + 'px', width: iw + 'px', height: ih + 'px' });
+    CW = Math.max(10, Math.min(14, W / 48)); CH = CW * 1.85;
+    cols = Math.ceil(W / CW); rows = Math.ceil(H / CH);
+    const k = 3; off.width = cols * k; off.height = rows * k;
+    octx.imageSmoothingQuality = 'high';
+    octx.drawImage(img, ix / CW * k, iy / CH * k, iw / CW * k, ih / CH * k);
+    const d = octx.getImageData(0, 0, off.width, off.height).data;
+    val = new Float32Array(cols * rows); heat = new Float32Array(cols * rows); zone = new Float32Array(rows);
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      let R = 0, G = 0, B = 0;
+      for (let y = 0; y < k; y++) for (let x = 0; x < k; x++) { const q = ((r * k + y) * off.width + c * k + x) * 4; R += d[q]; G += d[q + 1]; B += d[q + 2]; }
+      R /= k * k; G /= k * k; B /= k * k;
+      val[r * cols + c] = clamp((R - .25 * G - .15 * B - CFG.lo) / 100);   // petals light up, the blue background stays empty
+    }
+    // readability: glyphs fade out behind the heading and the lead
+    const tb = head.offsetTop + head.offsetHeight;
+    for (let r = 0; r < rows; r++) { const y = (r + .5) * CH, u = clamp((y - tb + 10) / 170); zone[r] = CFG.textFade + (1 - CFG.textFade) * u * u * (3 - 2 * u); }
+    if (still) draw(0);
+  }
+
+  panel.addEventListener('pointermove', (e) => { const r = panel.getBoundingClientRect(); m.x = e.clientX - r.left; m.y = e.clientY - r.top; });
+  panel.addEventListener('pointerleave', () => { m.x = m.y = m.px = m.py = -1e4; });
+
+  function draw(t) {
+    if (!val) return;
+    if (t0 === null) t0 = t;
+    const dt = Math.min(.05, t - (last || t)); last = t;
+    // the pointer leaves a trail of scrambling glyphs
+    if (m.x > -1e3 && !still) {
+      const steps = m.px > -1e3 ? Math.min(12, Math.ceil(Math.hypot(m.x - m.px, m.y - m.py) / 10)) : 1;
+      for (let s = 1; s <= steps; s++) {
+        const x = m.px > -1e3 ? m.px + (m.x - m.px) * s / steps : m.x, y = m.px > -1e3 ? m.py + (m.y - m.py) * s / steps : m.y;
+        const R = 70, c0 = Math.floor((x - R) / CW), c1 = Math.ceil((x + R) / CW), r0 = Math.floor((y - R) / CH), r1 = Math.ceil((y + R) / CH);
+        for (let r = Math.max(0, r0); r <= Math.min(rows - 1, r1); r++) for (let c = Math.max(0, c0); c <= Math.min(cols - 1, c1); c++) {
+          const dd = Math.hypot((c + .5) * CW - x, (r + .5) * CH - y) / R; if (dd < 1) { const i = r * cols + c; heat[i] = Math.max(heat[i], (1 - dd) * (1 - dd)); }
+        }
+      }
+      m.px = m.x; m.py = m.y;
+    }
+    const decay = Math.pow(.18, dt), intro = still ? 9 : t - t0;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    ctx.font = `500 ${Math.round(CW * 1.2)}px ui-monospace, "SF Mono", Menlo, Consolas, monospace`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff';
+    for (let r = 0; r < rows; r++) {
+      const y = (r + .5) * CH;
+      for (let c = 0; c < cols; c++) {
+        const i = r * cols + c, x = (c + .5) * CW;
+        heat[i] *= decay; const h = heat[i];
+        const breathe = .82 + .18 * Math.sin(t * .9 - x * .011 - y * .007);   // slow light wave across the petals
+        const v = val[i] * breathe * zone[r];
+        const rev = clamp((intro * 1.4 - (1 - r / rows) * .9) * 2.2);          // intro: rows decode from the bottom up
+        if (rev <= 0) continue;
+        const I = Math.max(v, h * (.12 + .73 * zone[r]));                      // the trail stays faint behind the copy
+        if (I < .1) continue;
+        let g;
+        if (h > .12 || rev < 1) g = SCRAMBLE[Math.floor(hash(i, Math.floor(t * 14)) * SCRAMBLE.length)];
+        else {
+          let k = Math.min(RAMP.length - 1, Math.floor(Math.pow(I, .8) * RAMP.length));
+          if (!still && hash(i, Math.floor(t * 1.5 + hash(i, 7) * 9)) < .04) k = Math.max(0, k - 2);   // sparse idle flicker
+          g = RAMP[k];
+        }
+        let ox = 0, oy = 0;   // glyphs near the cursor drift away from it
+        if (m.x > -1e3) { const dx = x - m.x, dy = y - m.y, dd = Math.hypot(dx, dy); if (dd < 110 && dd > 1) { const f = (1 - dd / 110) ** 2 * 10; ox = dx / dd * f; oy = dy / dd * f; } }
+        ctx.globalAlpha = Math.min(1, (.2 + .8 * Math.pow(I, 1.1)) * rev);
+        ctx.fillText(g, x + ox, y + oy);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  img.decode().then(() => {
+    layout(); new ResizeObserver(layout).observe(panel);
+    if (still) return;
+    let on = false;
+    const tick = (now) => { if (!on) return; draw(now / 1000); requestAnimationFrame(tick); };
+    new IntersectionObserver(([e]) => { const was = on; on = e.isIntersecting; if (on && !was) requestAnimationFrame(tick); }, { threshold: .15 }).observe(panel);
+  }).catch(() => {});
 })();
 </script>
 </body>
